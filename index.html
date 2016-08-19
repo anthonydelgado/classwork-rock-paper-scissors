@@ -19,106 +19,178 @@
 
 <script>
 
-    document.onkeyup = function() {
+    var winCount = 0;
+    var tieCount = 0;
+    var lostCount = 0;
 
-
+    function playGame(userGuess) {
 
         var computerChoice = Math.random();
         if (computerChoice < 0.33) {
-            computerChoice = "r";
+            computerChoice = "rock";
         }
         else if (computerChoice < 0.66) {
-            computerChoice = "p";
+            computerChoice = "paper";
         }
         else {
-            computerChoice = "s";
+            computerChoice = "scissors";
         }
 
 
-        // Determines which exact key was selected. Make it lowercase
-        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-        // Alerts with user guess
-        console.log('The user guessed ');
-        console.log(userGuess);
         console.log('The computer guessed');
         console.log(computerChoice);
 
         if (userGuess === computerChoice) {
-            sweetAlert('its a tie');
-        } else if ( (userGuess === 'r') && (computerChoice === 's') ) {
+            swal('Its a tie!',  userGuess + ' vs ' + computerChoice );
+            tieCount++;
+        } else if ( (userGuess === 'rock') && (computerChoice === 'scissors') ) {
             //rock vs scissors
-            sweetAlert('you win');
-
-        } else if ( (userGuess === 'p') && (computerChoice === 'r') ) {
+            swal('Winner!', 'rock vs scissors');
+            winCount++;
+        } else if ( (userGuess === 'paper') && (computerChoice === 'rock') ) {
             //paper vs rock
-            sweetAlert('you win');
+            swal('Winner!', 'paper vs rock');
+            winCount++;
 
-        } else if ( (userGuess === 's') && (computerChoice === 'p') ) {
+        } else if ( (userGuess === 'scissors') && (computerChoice === 'paper') ) {
             //scissor vs paper
-            sweetAlert('you win');
+            swal('Winner!', 'scissor vs paper');
+            winCount++;
 
         } else {
             //catch all else
-            sweetAlert( 'looser' );
+            swal( 'Sorry, you lost.', userGuess + ' vs ' + computerChoice );
+            lostCount++;
         }
+
+
+        // Taking the tallies and displaying them in HTML
+        var html = "<li>Win: " + winCount + " Loose: " + lostCount + "  Tie: " + tieCount + " </li>";
+
+        // Placing the html into the game ID
+        document.querySelector('#score-board').innerHTML = html;
+
 
     }
 
+
+    document.onkeyup = function() {
+
+        // Determines which exact key was selected. Make it lowercase
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        switch (userGuess) {
+            case 'r':
+                playGame("rock");
+                break;
+            case 'p':
+                playGame("paper");
+                break;
+            case 's':
+                playGame("scissors");
+                break;
+        }
+    }
+
 </script>
+
+<nav>
+    <div class="container">
+    <div class="nav-wrapper">
+        <ul id="score-board" class="left hide-on-med-and-down">
+            <li>Win: 0 Loose: 0 Tie: 0 </li>
+        </ul>
+        <a href="#" class="brand-logo center">ROCK PAPER SCISSORS!</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="btn waves-effect waves-light" href="https://github.com/anthonydelgado/classwork-rock-paper-scissors" target="_blank">GitHub</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<div class="container">
 
 <div class="row">
     <div class="col s12 m4">
 
 
-        <div class="card">
+        <div class="card"  onclick="playGame('rock')">
             <div class="card-image">
                 <img src="images/rock.gif">
                 <span class="card-title">The Rock</span>
             </div>
             <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                <p>Do you smell what the rock is cooking?</p>
             </div>
             <div class="card-action">
-                <a href="#">Select Rock</a>
+                <a>Click for Rock
+                    <br>(or press 'R')</a>
             </div>
         </div>
     </div>
 
 
     <div class="col s12 m4">
-        <div class="card">
+        <div class="card" onclick="playGame('paper')">
             <div class="card-image">
                 <img src="images/paper.gif">
                 <span class="card-title">Paper</span>
             </div>
             <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                <p>Save a tree. Send an email.</p>
             </div>
             <div class="card-action">
-                <a href="#">Select Paper</a>
+                <a>Click for Paper
+                    <br>(or press 'P')</a>
             </div>
         </div>
     </div>
 
     <div class="col s12 m4">
-        <div class="card">
+        <div class="card"  onclick="playGame('scissors')" >
             <div class="card-image">
                 <img src="images/scissors.gif">
                 <span class="card-title">Scissors</span>
             </div>
             <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                <p>Please dont run while playing this game.</p>
             </div>
             <div class="card-action">
-                <a href="#">Select Scissors</a>
+                <a>Click for Scissors
+                    <br>(or press 'S')</a>
             </div>
         </div>
     </div>
 </div>
+
+</div>
+
+
+
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Rock, Paper, Scissors JS Game</h5>
+                <p class="grey-text text-lighten-4">This quick javascript game was built while attending Rutgers Coding Bootcamp!</p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Follow me</h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="https://github.com/anthonydelgado">GitHub</a></li>
+                    <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/anthony-delgado">Linkedin</a></li>
+                    <li><a class="grey-text text-lighten-3" href="http://anthonydelgado.me/">Website</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2016 Anthony Delgado
+            <a class="grey-text text-lighten-4 right" href="http://anthonydelgado.me/">Check out my Portfolio!</a>
+        </div>
+    </div>
+</footer>
 
 
 </body>

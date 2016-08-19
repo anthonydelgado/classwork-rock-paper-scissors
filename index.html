@@ -8,92 +8,14 @@
     <title>Rock Paper Scissors in Javascript!</title>
     <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
     <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
-
-
-    <script src="major/dist/sweetalert-dev.js"></script>
-    <link rel="stylesheet" href="major/dist/sweetalert.css">
-
+    <!--Sweet Alerts-->
+    <script src="bower_components/sweetalert/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="bower_components/sweetalert/dist/sweetalert.css">
+    <!--Custom CSS and JS-->
+    <link rel="stylesheet" href="custom.css">
+    <script src="custom.js"></script>
 </head>
 <body>
-
-
-<script>
-
-    var winCount = 0;
-    var tieCount = 0;
-    var lostCount = 0;
-
-    function playGame(userGuess) {
-
-        var computerChoice = Math.random();
-        if (computerChoice < 0.33) {
-            computerChoice = "rock";
-        }
-        else if (computerChoice < 0.66) {
-            computerChoice = "paper";
-        }
-        else {
-            computerChoice = "scissors";
-        }
-
-
-        console.log('The computer guessed');
-        console.log(computerChoice);
-
-        if (userGuess === computerChoice) {
-            swal('Its a tie!',  userGuess + ' vs ' + computerChoice );
-            tieCount++;
-        } else if ( (userGuess === 'rock') && (computerChoice === 'scissors') ) {
-            //rock vs scissors
-            swal('Winner!', 'rock vs scissors');
-            winCount++;
-        } else if ( (userGuess === 'paper') && (computerChoice === 'rock') ) {
-            //paper vs rock
-            swal('Winner!', 'paper vs rock');
-            winCount++;
-
-        } else if ( (userGuess === 'scissors') && (computerChoice === 'paper') ) {
-            //scissor vs paper
-            swal('Winner!', 'scissor vs paper');
-            winCount++;
-
-        } else {
-            //catch all else
-            swal( 'Sorry, you lost.', userGuess + ' vs ' + computerChoice );
-            lostCount++;
-        }
-
-
-        // Taking the tallies and displaying them in HTML
-        var html = "<li>Win: " + winCount + " Loose: " + lostCount + "  Tie: " + tieCount + " </li>";
-
-        // Placing the html into the game ID
-        document.querySelector('#score-board').innerHTML = html;
-
-
-    }
-
-
-    document.onkeyup = function() {
-
-        // Determines which exact key was selected. Make it lowercase
-        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
-        switch (userGuess) {
-            case 'r':
-                playGame("rock");
-                break;
-            case 'p':
-                playGame("paper");
-                break;
-            case 's':
-                playGame("scissors");
-                break;
-        }
-    }
-
-</script>
-
 <nav>
     <div class="container">
     <div class="nav-wrapper">
@@ -112,9 +34,7 @@
 
 <div class="row">
     <div class="col s12 m4">
-
-
-        <div class="card"  onclick="playGame('rock')">
+        <div class="card" onclick="playGame('rock')">
             <div class="card-image">
                 <img src="images/rock.gif">
                 <span class="card-title">The Rock</span>

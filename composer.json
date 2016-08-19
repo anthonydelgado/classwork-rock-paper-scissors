@@ -1,0 +1,11 @@
+{
+    "name": "user/classwork-rock-paper-scissors",
+    "description": "classwork JS game",
+    "authors": [
+        {
+            "name": "anthony delgado",
+            "email": "me@anthonydelgado.me"
+        }
+    ],
+    "require": {}
+}

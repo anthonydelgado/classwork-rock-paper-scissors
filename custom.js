@@ -26,25 +26,46 @@ function playGame(userGuess) {
     console.log(computerChoice);
 
     if (userGuess === computerChoice) {
-        swal('Its a tie!',  userGuess + ' vs ' + computerChoice );
+        // Its a tie!
+        swal({
+            title: "Its a tie!",
+            text: userGuess + ' vs ' + computerChoice,
+            imageUrl: "images/tie.gif"
+        });
         tieCount++;
-    } else if ( (userGuess === 'rock') && (computerChoice === 'scissors') ) {
+    } else if ((userGuess === 'rock') && (computerChoice === 'scissors')) {
         //rock vs scissors
-        swal('Winner!', 'rock vs scissors');
+        swal({
+            title: "Winner!",
+            text: userGuess + ' vs ' + computerChoice,
+            imageUrl: "images/win.gif"
+        });
         winCount++;
-    } else if ( (userGuess === 'paper') && (computerChoice === 'rock') ) {
+    } else if ((userGuess === 'paper') && (computerChoice === 'rock')) {
         //paper vs rock
-        swal('Winner!', 'paper vs rock');
+        swal({
+            title: "Winner!",
+            text: userGuess + ' vs ' + computerChoice,
+            imageUrl: "images/win.gif"
+        });
         winCount++;
 
-    } else if ( (userGuess === 'scissors') && (computerChoice === 'paper') ) {
+    } else if ((userGuess === 'scissors') && (computerChoice === 'paper')) {
         //scissor vs paper
-        swal('Winner!', 'scissor vs paper');
+        swal({
+            title: "Winner!",
+            text: userGuess + ' vs ' + computerChoice,
+            imageUrl: "images/win.gif"
+        });
         winCount++;
 
     } else {
-        //catch all else
-        swal( 'Sorry, you lost.', userGuess + ' vs ' + computerChoice );
+        //catch all else - Sorry, you lost.
+        swal({
+            title: "Loser!",
+            text: userGuess + ' vs ' + computerChoice,
+            imageUrl: "images/loser.gif"
+        });
         lostCount++;
     }
 
@@ -59,7 +80,7 @@ function playGame(userGuess) {
 }
 
 
-document.onkeyup = function() {
+document.onkeyup = function () {
 
     // Determines which exact key was selected. Make it lowercase
     var userGuess = String.fromCharCode(event.keyCode).toLowerCase();

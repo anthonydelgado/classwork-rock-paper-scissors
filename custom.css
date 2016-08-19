@@ -5,3 +5,7 @@ nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i, footer.
 .btn, .btn-large {
     background-color: #e74c3c;
 }
+.sa-icon.sa-custom {
+    width: 100% !important;
+    height: 200px !important;
+}

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors in Javascript!</title>
+    <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
+    <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
+
+
+    <script src="major/dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="major/dist/sweetalert.css">
+
+</head>
+<body>
+
+
+<script>
+
+    document.onkeyup = function() {
+
+
+
+        var computerChoice = Math.random();
+        if (computerChoice < 0.33) {
+            computerChoice = "r";
+        }
+        else if (computerChoice < 0.66) {
+            computerChoice = "p";
+        }
+        else {
+            computerChoice = "s";
+        }
+
+
+        // Determines which exact key was selected. Make it lowercase
+        var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+
+        // Alerts with user guess
+        console.log('The user guessed ');
+        console.log(userGuess);
+        console.log('The computer guessed');
+        console.log(computerChoice);
+
+        if (userGuess === computerChoice) {
+            sweetAlert('its a tie');
+        } else if ( (userGuess === 'r') && (computerChoice === 's') ) {
+            //rock vs scissors
+            sweetAlert('you win');
+
+        } else if ( (userGuess === 'p') && (computerChoice === 'r') ) {
+            //paper vs rock
+            sweetAlert('you win');
+
+        } else if ( (userGuess === 's') && (computerChoice === 'p') ) {
+            //scissor vs paper
+            sweetAlert('you win');
+
+        } else {
+            //catch all else
+            sweetAlert( 'looser' );
+        }
+
+    }
+
+</script>
+
+<div class="row">
+    <div class="col s12 m4">
+
+
+        <div class="card">
+            <div class="card-image">
+                <img src="images/rock.gif">
+                <span class="card-title">The Rock</span>
+            </div>
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">Select Rock</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                <img src="images/paper.gif">
+                <span class="card-title">Paper</span>
+            </div>
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">Select Paper</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                <img src="images/scissors.gif">
+                <span class="card-title">Scissors</span>
+            </div>
+            <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+                <a href="#">Select Scissors</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

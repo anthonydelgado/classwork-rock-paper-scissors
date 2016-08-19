@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Steak</title>
+
+    <!-- This is what you need -->
+    <script src="dist/sweetalert-dev.js"></script>
+    <link rel="stylesheet" href="dist/sweetalert.css">
+
+</head>
+<body>
+
+
+<button onclick="lunchFunction()">Lunch time</button>
+
+
+<button onclick="voteFunction()">vote</button>
+
+
+<button onclick="steakFunction()">order lunch</button>
+
+<script type="text/javascript">
+
+
+    function steakFunction() {
+//        var eatSteak = confirm("Do you eat steak?");
+
+
+        swal({
+            title: "Do you eat steak?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, I do!",
+            cancelButtonText: "No, Im vegan!",
+            closeOnConfirm: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+                document.write('<h1>Here is a steak sandwich!</h1><br><img src="https://media4.giphy.com/media/xTiTnlI3OP7jLsF4pa/200.gif"><br>');
+            } else {
+                document.write('<h1>Here is a stir fry!</h1><br><img src="https://media2.giphy.com/media/JaIpNsXyW2K0U/200.gif"><br>');
+            }
+        });
+
+
+        if (eatSteak) {
+            document.write('<h1>Here is a steak sandwich!</h1><br><img src="https://media4.giphy.com/media/xTiTnlI3OP7jLsF4pa/200.gif"><br>');
+        } else {
+            document.write('<h1>Here is a stir fry!</h1><br><img src="https://media2.giphy.com/media/JaIpNsXyW2K0U/200.gif"><br>');
+        }
+    }
+
+    //    var trumpTrain = prompt("Do you support Trump?");
+
+    function voteFunction() {
+        var trumpTrain = confirm("Do you support Trump?");
+
+        if (trumpTrain) {
+            document.write('<h1>Welcome to the Trump Train!</h1><br><img src="https://media.giphy.com/media/l41m5hkVQg20z10ys/giphy.gif"><br>');
+        } else {
+            document.write('<h1>#NEVERTRUMP!</h1><br><img src="https://media.giphy.com/media/xTiTnHXbRoaZ1B1Mo8/200w.gif"><br>');
+        }
+
+        var imWithHer = confirm("Do you support Hillary?");
+
+        if (imWithHer) {
+            document.write('<h1>#IMWITHHER!</h1><br><img src="https://media2.giphy.com/media/iBxy2M8fptGve/200.gif"><br>');
+        } else {
+            document.write('<h1>#NOTWITHHER!</h1><br><img src="https://media1.giphy.com/media/Pq7G5v9jagq0o/200.gif"><br>');
+        }
+    }
+
+    function lunchFunction() {
+        swal({
+            title: "Lunch time!",
+            text: "What do you want to eat for lunch?",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "Write something"
+        }, function (inputValue) {
+            if (inputValue === false) return false;
+            if (inputValue === "") {
+                swal.showInputError("You need to tell us what you want for lunch!!!");
+                return false
+            }
+            swal("Nice!", "We will text you lunch spots that serve: " + inputValue, "success");
+        });
+    }
+
+</script>
+</body>
+</html>
